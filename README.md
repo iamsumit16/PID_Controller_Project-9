@@ -18,7 +18,7 @@ The integral term accelerates the movement of the process towards setpoint and e
 
 Manual adjustment
 ---
-I initialized PID coefficients with the initial values that where given in class and slowly adjusted them until I found a consistent and robust values that could run the track for eternity and these values are [.2 , .0001 , 3.0].
+I initialized PID coefficients with the initial values that where given in class and slowly adjusted them until I found a consistent and robust values which are [0.2 , .0001 , 3.0].
 
 Twiddle
 ---
