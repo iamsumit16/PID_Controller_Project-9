@@ -1,33 +1,29 @@
 # CarND-Controls-PID
 Self-Driving Car Engineer Nanodegree Program
+
+PID
 ---
 PID controller is a combination of 3 techniques:
 
 P, the proportional term produces an output value that is proportional to the current error value. The proportional response can be adjusted by multiplying the error by a constant Kp, called the proportional gain constant.
-
-The proportional term is given by
-
-{\displaystyle P_{\text{out}}=K_{\text{p}}e(t).} {\displaystyle P_{\text{out}}=K_{\text{p}}e(t).}.
 This is the fundamental component of the controller its responsible for keeping the vehicle in proportion to the center of the lane. This component is the one that re-adjusts the steering to the left or right to recenter the vehicle, in fact the CTE is the distance between the vehicle center and the lane center.
 
 
 D, the derivative of the process error is calculated by determining the slope of the error over time and multiplying this rate of change by the derivative gain Kd. The magnitude of the contribution of the derivative term to the overall control action is termed the derivative gain, Kd.
-
-The derivative term is given by
-
-{\displaystyle D_{\text{out}}=K_{\text{d}}{\frac {de(t)}{dt}}.} {\displaystyle D_{\text{out}}=K_{\text{d}}{\frac {de(t)}{dt}}.}
-
 Derivative action predicts system behavior and thus improves settling time and stability of the system. It solves the P component’s tendency to overshoot and zigzag within the lane or even worse go for a swim in our case. It does this by using the difference of the previous CTE and the current CTE and readjusting.
 
 
 I, The contribution from the integral term is proportional to both the magnitude of the error and the duration of the error. The integral in a PID controller is the sum of the instantaneous error over time and gives the accumulated offset that should have been corrected previously. The accumulated error is then multiplied by the integral gain (Ki) and added to the controller output.
-The integral term is given by
-
-{\displaystyle I_{\text{out}}=K_{\text{i}}\int _{0}^{t}e(\tau )\,d\tau .} {\displaystyle I_{\text{out}}=K_{\text{i}}\int _{0}^{t}e(\tau )\,d\tau .}
-
 The integral term accelerates the movement of the process towards setpoint and eliminates the residual steady-state error that occurs with a pure proportional controller. In our case it is more of an optimization for the previous 2 components that reduces vehicle bias from drift and sharp turns.
 
+Manual adjustment
 ---
+I initialized PID coefficients with the initial values that where given in class and slowly adjusted them until I found a consistent and robust values that could run the track for eternity and these values are [.2 , .0001 , 3.0].
+
+Twiddle
+---
+I applied Twiddle to adjust the PID coefficients. However, I noticed a little inconsistency also the manual value that I tuned prior performed better so I disabled the Twiddle optimizer.
+
 
 ## Dependencies
 
